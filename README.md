@@ -5,6 +5,7 @@
 2. yarn add material-ui @types/material-ui react-tap-event-plugin @types/react-tap-event-plugin
 3. 引入 icon: 下载 icomoon(iconfont); import './icomoon/style.css'
 4. 自定义 material-ui theme 参考 UIProvider 代码
+5. yarn add styled-components
 
 
 
