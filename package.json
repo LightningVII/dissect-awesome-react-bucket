@@ -8,12 +8,17 @@
     "@types/node": "^8.0.26",
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
+    "@types/react-redux": "^5.0.6",
     "@types/react-tap-event-plugin": "^0.0.30",
+    "@types/redux-actions": "^1.2.8",
     "material-ui": "^0.19.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-scripts-ts": "2.6.0",
     "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
     "styled-components": "^2.1.2"
   },
   "scripts": {
