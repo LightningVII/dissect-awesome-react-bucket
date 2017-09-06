@@ -9,6 +9,7 @@
 6. yarn add redux redux-actions @types/redux-actions react-redux @types/react-redux  
 **(*redux-actions* Flux Standard Action utilities for Redux *react-redux* Official React bindings for Redux.)**
 7. yarn add redux-devtools-extension **(Chrome 扩展插件用于开发redux)**
+8. yarn add redux-saga **(redux异步解决方案)**
 
 ##Project Structure
 #### redux
@@ -26,7 +27,7 @@
 - 运行中 view -> action -> (异步action) -> root -> store -> reducer -> view
 
 ##issue
-####1. material-ui @types文件接口声明有误(出现接口遗漏未定义的情况)
+#### 1. material-ui @types文件接口声明有误(出现接口遗漏未定义的情况)
 #####处理方案: /node_modules/@types/mmaterial-ui/index.d.ts
 	interface MuiTheme {
 	    ...
@@ -40,6 +41,14 @@
 	    };
 	    ...
 	}
+
+#### 2. create-react-app 设置 proxy
+##### package.json 
+	"name": "xxxxx",
+	"version": "0.1.0",
+	"private": true,
+	"proxy": "http://localhost:4000",
+	...
 	
 ##examples
 ####1. redux 基础应用实例
