@@ -19,6 +19,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
+    "redux-devtools-extension": "^2.13.2",
     "styled-components": "^2.1.2"
   },
   "scripts": {
