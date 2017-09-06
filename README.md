@@ -25,6 +25,11 @@
 ###redux 单项数据流
 - 初始化 root -> store -> reducer -> type -> action
 - 运行中 view -> action -> (异步action) -> root -> store -> reducer -> view
+- **saga作用** 
+
+> Count 模块 action(request) 发出命令，saga 的 action 监听 Count action(request) 执行 ForkEffect (异步事件)， 通过call请求事件，拿到结果后，通知 (put) 到 指定的 Count 模块 action(succeeded) 传递命令 {type, payload} , Count reducer 定义 succeeded 执行规则接收命令执行规则。
+
+> 由原来的 action 与 reducer 通信，变为 action -> saga -> reducer，saga监听 action，异步事件结束后，通知 reducer 处理后续
 
 ##issue
 #### 1. material-ui @types文件接口声明有误(出现接口遗漏未定义的情况)
