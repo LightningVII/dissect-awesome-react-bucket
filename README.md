@@ -10,6 +10,21 @@
 **(*redux-actions* Flux Standard Action utilities for Redux *react-redux* Official React bindings for Redux.)**
 7. yarn add redux-devtools-extension **(Chrome 扩展插件用于开发redux)**
 
+##Project Structure
+#### redux
+1. actions **(定义数据CURD方法及入参)**
+1. // saga(async actions) **(定义数据CURD方法及入参)**
+2. root reduxProvider **(加载store)**
+2. store **(数据容器)**
+3. reducer **(根据action定义的方法，采用函数式编程实现并返回新的结果数据)**
+4. constants **(存放action定义的方法名，目的让reducer找到action)**
+
+
+##Thinks
+###redux 单项数据流
+- 初始化 root -> store -> reducer -> type -> action
+- 运行中 view -> action -> (异步action) -> root -> store -> reducer -> view
+
 ##issue
 ####1. material-ui @types文件接口声明有误(出现接口遗漏未定义的情况)
 #####处理方案: /node_modules/@types/mmaterial-ui/index.d.ts
