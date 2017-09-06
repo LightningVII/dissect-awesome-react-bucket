@@ -50,6 +50,36 @@
 	"proxy": "http://localhost:4000",
 	...
 	
+#### 3. redux-saga beginner tutorial
+1. store 装载
+	
+		import { createStore, applyMiddleware } from 'redux'
+		import reducer from '../reducers';
+		import { composeWithDevTools } from 'redux-devtools-extension';
+		
+		export default function configureStore(initialState = {}) {
+		    const enhancer = composeWithDevTools(applyMiddleware());
+		    const store = createStore(reducer, initialState, enhancer);
+		    return store
+		}
+	
+#### 4. redux-saga beginner tutorial
+1. store 添加saga中间件，关键代码
+
+		import createSagaMiddleware from 'redux-saga';
+		import { saga } from '../sagas/xxxx.saga'
+		
+		const sagaMiddleware = createSagaMiddleware()
+		const initialState = {};
+		
+		export default function configureStore(state: any = initialState) {
+		    const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
+		    const store = createStore(reducer, state, enhancer);
+		    sagaMiddleware.run(saga)
+		    return store
+		}
+
+	
 ##examples
 ####1. redux 基础应用实例
 #####具体代码参见 /examples/redux
