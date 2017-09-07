@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
+import IndexRouter from './Router';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import './index.style';
 import Provider from './Provider';
 
 ReactDOM.render(
   <Provider>
-    <App />
+    <IndexRouter />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
