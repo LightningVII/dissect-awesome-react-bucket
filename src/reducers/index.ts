@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import count from './Count.reducer'
+import countState from './Count.reducer';
+import commonState from './Common.reducer';
 
 export default combineReducers({
-    count
+    countState,
+    commonState
 })
