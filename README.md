@@ -10,6 +10,7 @@
 **(*redux-actions* Flux Standard Action utilities for Redux *react-redux* Official React bindings for Redux.)**
 7. yarn add redux-devtools-extension **(Chrome 扩展插件用于开发redux)**
 8. yarn add redux-saga **(redux异步解决方案)**
+9. yarn add react-router-dom **(路由 4.\*)**
 
 ##Project Structure
 #### redux
