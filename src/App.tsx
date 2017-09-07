@@ -39,7 +39,6 @@ const BgColor: any = styled.section`
 class App extends React.Component<any, any> {
   componentDidMount(){
     this.props.actions.fetchCountRequested()
-    // FETCH_COUNT_REQUESTED
     this.props.actions.decrement({caption: 'First', count: 5})
   }
   render() {
@@ -60,12 +59,7 @@ class App extends React.Component<any, any> {
   }
 }
 
-
-// const mapStateToProps = (state: any) => {
-//   console.log(state)
-//   return {}
-// };
-const mapStateToProps = (state: any) => state.count;
+const mapStateToProps = (state: any) => state.countState;
 
 const mapDispatchToProps = (dispatch: any) => ({
     actions: bindActionCreators<any>(Actions, dispatch)
