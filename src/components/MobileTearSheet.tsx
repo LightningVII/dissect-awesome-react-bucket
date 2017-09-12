@@ -1,5 +1,5 @@
 import * as React from "react";
-const bottomTear = require('./images/bottom-tear.svg');
+const bottomTear = require('../images/bottom-tear.svg');
 
 class MobileTearSheet extends React.Component<any, any> {
   static PropTypes = {

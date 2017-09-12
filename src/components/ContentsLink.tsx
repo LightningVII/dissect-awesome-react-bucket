@@ -1,13 +1,11 @@
 import * as React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Actions from "./actions/Common.actions";
-
+import Actions from "../actions/Common.actions";
 import Paper from "material-ui/Paper";
 import Menu from "material-ui/Menu";
 import MenuItem from "material-ui/MenuItem";
 import Divider from "material-ui/Divider";
-// import { Link } from "./style/common";
 import RemoveRedEye from "material-ui/svg-icons/image/remove-red-eye";
 import PersonAdd from "material-ui/svg-icons/social/person-add";
 import ContentLink from "material-ui/svg-icons/content/link";

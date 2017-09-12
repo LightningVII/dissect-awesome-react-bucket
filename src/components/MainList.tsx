@@ -3,8 +3,8 @@ import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import { styles } from './index.d';
-const img = require('./images/th-20005.jpg');
+import { styles } from '../index.d';
+const img = require('../images/th-20005.jpg');
 const styles: styles = {
     root: {
         display: 'flex',

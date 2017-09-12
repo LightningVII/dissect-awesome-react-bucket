@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './icomoon/style.css'
+import '../icomoon/style.css'
 import { MuiThemeProvider, getMuiTheme } from "material-ui/styles";
 import { blue500, grey600 } from 'material-ui/styles/colors';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';

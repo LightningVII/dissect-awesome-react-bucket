@@ -5,7 +5,7 @@ import Subheader from "material-ui/Subheader";
 import Divider from "material-ui/Divider";
 import Checkbox from "material-ui/Checkbox";
 import Toggle from "material-ui/Toggle";
-import { styles } from "./index.d";
+import { styles } from "../index.d";
 const styles: styles = {
   root: {
     display: "flex",

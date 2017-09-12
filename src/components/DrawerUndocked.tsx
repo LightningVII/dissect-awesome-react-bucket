@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Actions from './actions/Common.actions';
+import Actions from '../actions/Common.actions';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import { Link } from './style/common';
+import { Link } from '../style/common';
 
 const DrawerUndocked = (props: any) => {
   const handleClose = () => {

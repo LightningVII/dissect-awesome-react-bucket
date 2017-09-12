@@ -5,7 +5,7 @@ import {
 } from "material-ui/BottomNavigation";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Actions from "./actions/Common.actions";
+import Actions from "../actions/Common.actions";
 import FontIcon from "material-ui/FontIcon";
 import FileCloudDownload from "material-ui/svg-icons/file/cloud-download";
 import IconLocationOn from "material-ui/svg-icons/communication/location-on";
