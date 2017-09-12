@@ -1,29 +1,25 @@
-import * as React from 'react'
-// import App from './App'
-import MainHeader from './MainHeader'
-import MainFooter from './MainFooter'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import * as React from "react";
+
+import MainHeader from "./components/MainHeader";
+import MainFooter from "./components/MainFooter";
+import ContentsLink from "./components/ContentsLink";
+import ListExampleSettings from "./components/List";
+import SwipeableBanners from "./components/SwipeableBanners";
+import { BrowserRouter as Router, Route  } from "react-router-dom";
 
 const IndexRouter = () => (
   <Router>
     <div>
       {/* exact */}
       <Route path="/" component={MainHeader} />
-      <Route path="/about" component={MainFooter} />
-      <ul>
-        <li><Link to="/">首页</Link></li>
-        <li><Link to="/about">关于</Link></li>
-        <li><Link to="/topics">主题列表</Link></li>
-      </ul>
-      {/* <Route exact path="/" component={App} /> */}
       <Route path="/" component={MainFooter} />
-      <Route path="/about" component={MainHeader} />
+      {/* <Switch> */}
+      <Route exact path="/" component={SwipeableBanners} />
+      <Route path="/list" component={ListExampleSettings} />
+      <Route path="/links" component={ContentsLink} />
+      {/* </Switch> */}
     </div>
   </Router>
-)
+);
 
-export default IndexRouter
+export default IndexRouter;

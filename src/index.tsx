@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import IndexRouter from './Router';
 import registerServiceWorker from './registerServiceWorker';
 import './index.style';
-import Provider from './Provider';
+import Provider from './providers';
 
 ReactDOM.render(
   <Provider>

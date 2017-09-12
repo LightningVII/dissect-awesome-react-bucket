@@ -2,9 +2,9 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import styled, { keyframes } from 'styled-components';
-import MainHeader from './MainHeader';
-import MainFooter from './MainFooter';
-import MainList from './MainList';
+import MainHeader from './components/MainHeader';
+import MainFooter from './components/MainFooter';
+import MainList from './components/MainList';
 
 import Actions from './actions/Count.actions';
 import Paper from 'material-ui/Paper';

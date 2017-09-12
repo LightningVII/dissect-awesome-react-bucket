@@ -15,7 +15,7 @@ const DrawerUndocked = (props: any) => {
       <Drawer
         docked={false}
         width={200}
-        open={props.open}
+        open={props.menu.open}
         onRequestChange={handleClose}
       >
         <Link to="/about"><MenuItem onClick={handleClose}>Menu Item</MenuItem></Link>
