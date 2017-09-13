@@ -1,4 +1,5 @@
-# 深入浅出react全家桶
+# Dissecting React Ecosphere
+Use create-react-app build react & redux & react-redux & react-router-v4 & redux-saga & redux-actions & styled-components & material-ui with typescript.
 
 ## Project Building
 1. create-react-app [your project name] --scripts-version=react-scripts-ts **(基于官方脚手架，将TypeScript进行引入)**
