@@ -58,7 +58,12 @@ const ContentLinks = (props: any) => {
         {data.map(
           (item, index) =>
             item && item.to ? (
-              <a href={item.to} key={index} onClick={handleSelectNav}>
+              <a
+                style={{ textDecoration: "none" }}
+                href={item.to}
+                key={index}
+                onClick={handleSelectNav}
+              >
                 <MenuItem
                   primaryText={item.primaryText}
                   leftIcon={item.leftIcon}
