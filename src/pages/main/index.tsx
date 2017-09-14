@@ -28,12 +28,12 @@ class SwipeableBanners extends React.Component<any, any> {
         this.setState({
             index: value
         });
-    }
+    };
     handleChangeIndex = (index: any) => {
         this.setState({
             index
         });
-    }
+    };
     render() {
         const { index } = this.state;
 
@@ -48,8 +48,9 @@ class SwipeableBanners extends React.Component<any, any> {
                     index={index}
                     onChangeIndex={this.handleChangeIndex}
                 >
-                    <div style={Object.assign({}, styles.slide, styles.slide1)}>
-                        slide n°1
+                    <div>
+                        <Todos />
+                        <Filter />
                     </div>
                     <div style={Object.assign({}, styles.slide, styles.slide2)}>
                         slide n°2
@@ -58,8 +59,6 @@ class SwipeableBanners extends React.Component<any, any> {
                         slide n°3
                     </div>
                 </SwipeableViews>
-                <Todos />
-                <Filter />
             </div>
         );
     }

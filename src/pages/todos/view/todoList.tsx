@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import TodoItem from './todoItem';
 import Actions from '../actions';
 import FilterTypes from '../../../constants/FilterTypes';
+import { List } from 'material-ui/List';
 
 const TodoList = ({ todos, toggleTodo, removeTodo }: any) => {
     return (
-        <ul className="todo-list">
+        <List>
             {todos.map((item: any) => (
                 <TodoItem
                     key={item.id}
@@ -17,7 +18,7 @@ const TodoList = ({ todos, toggleTodo, removeTodo }: any) => {
                     onRemove={() => removeTodo(item.id)}
                 />
             ))}
-        </ul>
+        </List>
     );
 };
 

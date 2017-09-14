@@ -1,22 +1,15 @@
 import * as React from 'react';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import Actions from '../actions';
 
 const Link = ({ active, children, onClick }: any) => {
     if (active) {
-        return <b className="filter selected">{children}</b>;
+        return <RaisedButton primary label={children} />;
     } else {
         return (
-            <a
-                href="#"
-                className="filter not-selected"
-                onClick={ev => {
-                    ev.preventDefault();
-                    onClick();
-                }}
-            >
-                {children}
-            </a>
+            <FlatButton primary label={children} onClick={onClick} />
         );
     }
 };
