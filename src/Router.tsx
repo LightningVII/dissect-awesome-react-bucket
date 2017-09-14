@@ -10,7 +10,7 @@ import SwipeableBanners from './pages/main';
 const IndexRouter = () => (
   <Router>
     <div>
-      <Route path="/" component={MainHeader} />
+      <Route exact path="/" component={MainHeader} />
       <Route path="/" component={MainFooter} />
       <Switch>
         <Route exact path="/" component={SwipeableBanners} />

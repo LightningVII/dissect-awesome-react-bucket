@@ -6,15 +6,16 @@ const navSwitch = (
     routers: Array<string>,
     event: Event | any
 ) => {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+        const href = event.currentTarget.getAttribute('href');
+        props.actions.setBottomNavState({
+            selectedIndex: routers.indexOf(href)
+        });
+        props.history.push(href);
+    }
+
     props.actions.setMenuState({ open: false });
-    const href = event.currentTarget.getAttribute('href');
-    props.actions.setBottomNavState({
-        selectedIndex: routers.indexOf(href)
-    });
-    props.history.push(href);
 };
 
-export {
-    navSwitch
-};
+export { navSwitch };
