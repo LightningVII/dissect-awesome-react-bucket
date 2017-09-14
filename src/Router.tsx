@@ -1,23 +1,22 @@
-import * as React from "react";
-
-import MainHeader from "./components/MainHeader";
-import MainFooter from "./components/MainFooter";
-import ContentsLink from "./components/ContentsLink";
-import ListExampleSettings from "./components/List";
-import SwipeableBanners from "./components/SwipeableBanners";
-import { BrowserRouter as Router, Route  } from "react-router-dom";
+import * as React from 'react';
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
+import MainHeader from './pages/layout/header';
+import MainFooter from './pages/layout/footer';
+// import Layout from './pages/layout';
+import ContentsLink from './pages/links';
+import ListExampleSettings from './pages/list';
+import SwipeableBanners from './pages/main';
 
 const IndexRouter = () => (
   <Router>
     <div>
-      {/* exact */}
       <Route path="/" component={MainHeader} />
       <Route path="/" component={MainFooter} />
-      {/* <Switch> */}
-      <Route exact path="/" component={SwipeableBanners} />
-      <Route path="/list" component={ListExampleSettings} />
-      <Route path="/links" component={ContentsLink} />
-      {/* </Switch> */}
+      <Switch>
+        <Route exact path="/" component={SwipeableBanners} />
+        <Route path="/list" component={ListExampleSettings} />
+        <Route path="/links" component={ContentsLink} />
+      </Switch>
     </div>
   </Router>
 );
