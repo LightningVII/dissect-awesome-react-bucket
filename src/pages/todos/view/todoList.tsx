@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TodoItem from './todoItem';
 import Actions from '../actions';
@@ -41,7 +40,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: any) =>
-    bindActionCreators(Actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, Actions)(TodoList);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -16,15 +15,12 @@ class AddTodo extends React.Component<any, any> {
         if (!value.trim()) {
             return;
         }
-        this.props.actions.addTodo(value);
+        this.props.addTodo(value);
         this.setState({ inputValue: '' });
-    };
-    refInput = (node: any) => {
-        this.input = node;
-    };
+    }
     handleChange = (ev: any) => {
         this.setState({ inputValue: ev.target.value });
-    };
+    }
     render() {
         return (
             <div className="add-todo">
@@ -59,12 +55,5 @@ class AddTodo extends React.Component<any, any> {
         );
     }
 }
-{/* floatingLabelText="Enter Task" */}                       
 
-const mapDispatchToProps = (dispatch: any) => ({
-    actions: bindActionCreators<any>(Actions, dispatch)
-});
-
-export default connect(null, mapDispatchToProps)(AddTodo);
-
-// ref={this.refInput}
+export default connect(null, Actions)(AddTodo);

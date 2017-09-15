@@ -28,12 +28,12 @@ class SwipeableBanners extends React.Component<any, any> {
         this.setState({
             index: value
         });
-    };
+    }
     handleChangeIndex = (index: any) => {
         this.setState({
             index
         });
-    };
+    }
     render() {
         const { index } = this.state;
 

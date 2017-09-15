@@ -90,3 +90,73 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 ##examples
 ####1. redux 基础应用实例
 #####具体代码参见 /examples/redux
+
+
+## 项目优化技巧写法
+#### 尽可能避免使用 ref
+方案如果是为了获取 input value, 可以通过 state 同步 input value 的方式获取，但个人认为也不是最好的方案，因为有时只需要获取value，没必要进行 state 和 input value 的同步，这时其实是一种浪费。
+
+	onChange={(ev: any) => {
+		this.setState({ inputValue: ev.target.value });
+	}}
+
+#### mapDispatchToProps几种写法
+1. ###### this.props.actions.xxx()
+		const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+		    onClick: () => {
+		        dispatch(Actions.setFilter(ownProps.filter));
+		    }
+		});
+		
+2. ###### this.props.actions.xxx()
+		function mapDispatchToProps(dispatch: any) {
+		    return {
+		        actions: bindActionCreators<any>(Actions, dispatch)
+		    };
+		}
+		
+3. ###### this.props.actions.xxx()
+		const mapDispatchToProps = (dispatch: any) => ({
+			actions: bindActionCreators<any>(Actions, dispatch)
+		});
+		
+4. ###### {xxxFn, xxxFn}
+		import { bindActionCreators } from 'redux';
+		
+		const mapDispatchToProps = (dispatch: any) => 
+			(bindActionCreators(Actions, dispatch));
+		const mapDispatchToProps = (dispatch: any) =>
+			bindActionCreators(Actions, dispatch);
+			
+5. ###### {xxxFn, xxxFn}
+		const { toggleTodo, removeTodo } = Actions;
+		const mapDispatchToProps = {
+			toggleTodo,
+			removeTodo
+		};
+		
+6. ###### 避免 (tslint) no-shadow-name 的问题
+		const mapDispatchToProps = {
+		    toggleTodo: Actions.toggleTodo,
+		    removeTodo: Actions.removeTodo
+		};
+		
+7. ###### 最直接方案
+		/* const mapDispatchToProps = Actions; */
+		export default connect(mapStateToProps, Actions)(TodoList);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+##
