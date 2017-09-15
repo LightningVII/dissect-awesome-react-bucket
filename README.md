@@ -13,6 +13,11 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 8. yarn add redux-saga **(redux异步解决方案)**
 9. yarn add react-router-dom **(路由 4.\*)**
 
+## 调试工具引入
+1. redux-devtools
+2. react perf
+3. redux-immutable-state-invariant
+
 ##Project Structure
 #### redux
 1. actions **(定义数据CURD方法及入参)**
@@ -86,13 +91,75 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 		    return store
 		}
 
+#### 完整 store 
+	import { createStore, applyMiddleware, compose } from 'redux';
+	import reducer from './reducers';
+	
+	/* redux-saga redux 中间件 */
+	import createSagaMiddleware from 'redux-saga';
+	
+	/* 业务saga异步请求模块 */
+	import { watchCountFetch } from '../pages/count/sagas';
+	
+	/* 调用 Chrome 浏览器 redux-devtools 开发插件 */
+	// import { composeWithDevTools } from 'redux-devtools-extension';
+	
+	/* 调用 Chrome 浏览器 redux-devtools 开发插件 */
+	import * as Perf from 'react-addons-perf';
+	
+	/* 检测reducer的纯函数规则 */
+	const immutableStateInvariantMiddleware = require('redux-immutable-state-invariant');
+	
+	/* 这里 win = window，
+	因为 webpack 打包压缩不会压缩全局变量，
+	所以赋值给 win 这样webpack就可以压缩window了 */
+	/* 因为window没有声明，所以 as any ，或者采取下面的方法声明 window */
+	const win = window as any;
+	
+	/* interface Window {
+	    Perf: any;
+	    __REDUX_DEVTOOLS_EXTENSION__: any;
+	}
+	declare var window: Window;
+	const win = window; */
+	
+	win.Perf = Perf;
+	
+	/* 初始化默认 state */
+	const initialState = {};
+	
+	/* 创建 saga 中间件实例 */
+	const sagaMiddleware = createSagaMiddleware();
+	
+	/* redux中间件序列 */
+	const middlewares = [sagaMiddleware];
+	if (process.env.NODE_ENV === 'development') {
+	    middlewares.push(immutableStateInvariantMiddleware.default());
+	}
+	
+	/* 配置Store */
+	export default function configureStore(state: any = initialState) {
+	    /* 使用 composeWithDevTools 组合redux中间件并应用，也可以使用redux的compose，进行组合中间件 */
+	    const storeEnhancer = compose(
+	        applyMiddleware(...middlewares),
+	        win.__REDUX_DEVTOOLS_EXTENSION__ && win.__REDUX_DEVTOOLS_EXTENSION__()
+	    );
+	    
+	    /* 创建 store 实例 */
+	    const store = createStore(reducer, state, storeEnhancer);
+	    
+	    /* saga 中间件运行 saga业务模块 */
+	    sagaMiddleware.run(watchCountFetch);
+	    return store;
+	}
+
 	
 ##examples
 ####1. redux 基础应用实例
 #####具体代码参见 /examples/redux
 
 
-## 项目优化技巧写法
+## 项目优化技巧／写法方案
 #### 尽可能避免使用 ref
 方案如果是为了获取 input value, 可以通过 state 同步 input value 的方式获取，但个人认为也不是最好的方案，因为有时只需要获取value，没必要进行 state 和 input value 的同步，这时其实是一种浪费。
 
@@ -145,10 +212,9 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 		/* const mapDispatchToProps = Actions; */
 		export default connect(mapStateToProps, Actions)(TodoList);
 	
-	
-	
-	
-	
+###表达式
+[payload, ...state]
+{ ...todoItem, completed: !todoItem.completed }
 	
 	
 	
