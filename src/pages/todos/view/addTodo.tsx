@@ -4,6 +4,20 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { grey400, grey50 } from 'material-ui/styles/colors';
 import Actions from '../actions';
+const textFieldStyle: any = {
+    paddingLeft: 10,
+    backgroundColor: grey50,
+    borderRadius: 2,
+    marginRight: 5,
+    height: 36,
+    lineHeight: '12px'
+};
+const formStyle: any = {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: grey400,
+    padding: 10
+};
 class AddTodo extends React.Component<any, any> {
     input: any;
     state = {
@@ -24,25 +38,10 @@ class AddTodo extends React.Component<any, any> {
     render() {
         return (
             <div className="add-todo">
-                <form
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        backgroundColor: grey400,
-                        padding: 10
-                    }}
-                    onSubmit={this.onSubmit}
-                >
+                <form style={formStyle} onSubmit={this.onSubmit}>
                     <TextField
                         fullWidth
-                        style={{
-                            paddingLeft: 10,
-                            backgroundColor: grey50,
-                            borderRadius: 2,
-                            marginRight: 5,
-                            height: 36,
-                            lineHeight: '12px'
-                        }}
+                        style={textFieldStyle}
                         underlineShow={false}
                         rows={1}
                         hintText="Enter Task"
