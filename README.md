@@ -12,6 +12,7 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 7. yarn add redux-devtools-extension **(Chrome 扩展插件用于开发redux)**
 8. yarn add redux-saga **(redux异步解决方案)**
 9. yarn add react-router-dom **(路由 4.\*)**
+10. yarn add reselect **(redux数据缓存)**
 
 ## 调试工具引入
 1. redux-devtools
