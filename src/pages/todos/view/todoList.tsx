@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import TodoItem from './todoItem';
-import FilterTypes from '../../../constants/FilterTypes';
+import { selectVisibleTodos } from '../selector';
 import { List } from 'material-ui/List';
 
 /* 方法引用优化 避免重复创造新方法，参数传递通过增加元素属性的方式 */
@@ -20,21 +20,8 @@ const TodoList = ({ todos }: any) => {
     );
 };
 
-const selectVisibleTodos = (todos: any, filter: any) => {
-    switch (filter) {
-        case FilterTypes.ALL:
-            return todos;
-        case FilterTypes.COMPLETED:
-            return todos.filter((item: any) => item.completed);
-        case FilterTypes.UNCOMPLETED:
-            return todos.filter((item: any) => !item.completed);
-        default:
-            throw new Error('unsupported filter');
-    }
-};
-
 const mapStateToProps = (state: any) => ({
-    todos: selectVisibleTodos(state.todosState, state.filterState)
+    todos: selectVisibleTodos(state)
 });
 
 /* 方案1 将Actions传入 子组件中 */

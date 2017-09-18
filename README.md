@@ -160,14 +160,35 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 
 
 ## 项目优化技巧／写法方案
-#### 尽可能避免使用 ref
-方案如果是为了获取 input value, 可以通过 state 同步 input value 的方式获取，但个人认为也不是最好的方案，因为有时只需要获取value，没必要进行 state 和 input value 的同步，这时其实是一种浪费。
+#### 1. 尽可能避免组件包裹元素节点 dom 类型的改变
+比如:
+
+	<div>...</div> => <span>...</span>
+此时会造成内部元素的重新装载
+
+#### 2. key 关键字的使用
+> 当插入 \<li> zero react 会依次比较 ul 中的元素，默认会将first & zero，second & first ...进行比较，比较后发现不同，此时会重新渲染 first & second。
+> 
+> key作为唯一标识，在比较的时候，key=1，key=2...的元素进行比较，此时 first & first，second & second 进行比较，发现认为元素没有变化，就不会重新渲染 li first & second
+
+	<ul>
+		<li key={1}>first</li>
+		<li key={2}>second</li>
+	</ul>
+	<ul>
+		<li key={0}>zero</li>
+		<li key={1}>first</li>
+		<li key={2}>second</li>
+	</ul>
+
+#### 3. 尽可能避免使用 ref
+> 方案如果是为了获取 input value, 可以通过 state 同步 input value 的方式获取，但个人认为也不是最好的方案，因为有时只需要获取value，没必要进行 state 和 input value 的同步，这时其实是一种浪费。
 
 	onChange={(ev: any) => {
 		this.setState({ inputValue: ev.target.value });
 	}}
 
-#### mapDispatchToProps几种写法
+#### 4. mapDispatchToProps几种写法
 1. ###### this.props.actions.xxx()
 		const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
 		    onClick: () => {
