@@ -18,12 +18,17 @@ interface PropsInterface {
 
 class TodoItem extends React.Component<PropsInterface, {}> {
     shouldComponentUpdate(nextProps: PropsInterface, nextState: {}) {
+        console.log('TodoItemDidMount:' + this.props.text);
         return (
             nextProps.completed !== this.props.completed ||
             nextProps.text !== this.props.text
         );
     }
+    componentDidMount() {
+        console.log('TodoItemDidMount:' + this.props.text);
+    }
     render() {
+        console.log('TodoItemRender:' + this.props.text);
         const { text, onToggle, onRemove, completed } = this.props;
         const checkedProp: any = completed ? { checked: true } : {};
         /* 对象引用优化 避免重复创造新对象 */
