@@ -13,6 +13,8 @@ import { watchCountFetch } from '../pages/count/sagas';
 /* 调用 Chrome 浏览器 redux-devtools 开发插件 */
 import * as Perf from 'react-addons-perf';
 
+import thunk from 'redux-thunk';  
+
 /* 检测reducer的纯函数规则 */
 const immutableStateInvariantMiddleware = require('redux-immutable-state-invariant');
 
@@ -38,7 +40,7 @@ const initialState = {};
 const sagaMiddleware = createSagaMiddleware();
 
 /* redux中间件序列 */
-const middlewares = [sagaMiddleware];
+const middlewares = [sagaMiddleware, thunk];
 if (process.env.NODE_ENV === 'development') {
     middlewares.push(immutableStateInvariantMiddleware.default());
 }

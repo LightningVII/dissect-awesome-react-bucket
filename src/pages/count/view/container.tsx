@@ -8,6 +8,7 @@ import { darkBlack } from 'material-ui/styles/colors';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Actions from '../actions';
+import * as Thunk from '../thunks';
 class Count extends React.Component<any, any> {
     state = {
         data: { times: 0 },
@@ -88,30 +89,34 @@ class Count extends React.Component<any, any> {
         });
     }
 
-    componentDidMount() {
+    createChannelComponent(data: any) {
         const channelsStyle = {
             marginTop: 10,
             textAlign: 'center',
             display: 'inline-block',
             width: '25%'
         };
-        this.contributePost('channel', (data: any) => {
-            this.channels = data.result.result.map((channel: any) => {
-                return (
-                    <div key={channel} style={channelsStyle}>
-                        <RaisedButton
-                            onClick={this.getNews.bind(this, channel)}
-                            label={channel}
-                        />
-                    </div>
-                );
-            });
+        return data.map((channel: any) => {
+            return (
+                <div key={channel} style={channelsStyle}>
+                    <RaisedButton
+                        onClick={this.getNews.bind(this, channel)}
+                        label={channel}
+                    />
+                </div>
+            );
         });
     }
+    componentDidMount() {
+        /*  */
+        // this.dispatch(fetchChannelRequested('/api/jd/channel'));  
+        this.props.thunks.getChannel('/api/jd/channel');
+    }
     render() {
+        console.log(this.props);
         return (
             <div>
-                {this.channels}
+                {this.createChannelComponent(this.props.channel)}
                 <br />
                 <Snackbar
                     open={this.state.open}
@@ -128,7 +133,8 @@ class Count extends React.Component<any, any> {
 const mapStateToProps = (state: any) => state.countState;
 
 const mapDispatchToProps = (dispatch: any) => ({
-    actions: bindActionCreators<any>(Actions, dispatch)
+    actions: bindActionCreators<any>(Actions, dispatch),
+    thunks: bindActionCreators<any>(Thunk, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Count);

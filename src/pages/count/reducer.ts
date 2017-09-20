@@ -3,7 +3,8 @@ import { handleActions, combineActions } from 'redux-actions';
 
 const defaultState = {
     count: 0,
-    result: []
+    result: [],
+    channel: []
 };
 
 export default handleActions(
@@ -17,6 +18,9 @@ export default handleActions(
         [ActionTypes.FETCH_COUNT_SUCCEEDED](state: any, action: any) {
             const { data: { result = [] } } = action.payload;
             return { ...state, result: result };
+        },
+        [ActionTypes.FETCH_CHANNEL_SUCCESS](state: any, { payload }: any) {
+            return { ...state, channel: payload };
         }
     },
     defaultState
