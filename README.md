@@ -233,18 +233,74 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 7. ###### 最直接方案
 		/* const mapDispatchToProps = Actions; */
 		export default connect(mapStateToProps, Actions)(TodoList);
+		
+8. ###### PureComponent 
+
+	> 需要注意的是，PureComponent使用浅比较判断组件是否需要重绘，因此，下面对数据的修改并不会导致重绘（假设Table也是PureComponent)
+		
+		options.push(new Option())
+		options.splice(0, 1)
+		options[i].name = "Hello"
+	  
+	  
+	> 这些例子都是在原对象上进行修改，由于浅比较是比较指针的异同，所以会认为不需要进行重绘。
+		
+9. ###### Literal Array与Literal Object
+
+		{this.props.items.map(i =>
+		 	<Cell data={i} options={this.props.options || []} />
+		)}
+	
+	
+	> 若options为空，则会使用[]。[]每次会生成新的Array，因此导致Cell每次的props都不一样，导致需要重绘。解决方法如下:
+
+		const default = [];
+		{this.props.items.map(i =>
+		<Cell data={i} options={this.props.options || default} />
+		)}
+
+10. ###### 内联函数
+> 函数也经常作为props传递，由于每次需要为内联函数创建一个新的实例，所以每次function都会指向不同的内存地址。比如：
+
+	##### ❌
+		
+		render() {
+		  <MyInput onChange={e => this.props.update(e.target.value)} />;
+		}
+	
+	
+		update(e) {
+		  this.props.update(e.target.value);
+		}
+		
+		render() {
+		  return <MyInput onChange={this.update.bind(this)} />;
+		}
+------------------
+	##### ✅
+		constructor(props) {
+		 super(props);
+		 this.update = this.update.bind(this);
+		}
+		update(e) {
+		 this.props.update(e.target.value);
+		}
+		render() {
+		 return <MyInput onChange={this.update} />;
+		}
+	
+
 	
 ###表达式
 [payload, ...state]
 { ...todoItem, completed: !todoItem.completed }
 	
 	
+
+
 	
-	
-	
-	
-	
-	
-	
-	
-##
+###### ps: 项目优化技巧／写法方案中的，8、9、10是转载
+> 作者：橙子_80c3
+來源：[简书](http://www.jianshu.com/p/33cda0dc316a)
+
+
