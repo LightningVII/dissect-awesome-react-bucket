@@ -1,25 +1,36 @@
 import * as React from 'react';
 import '../common/static/icomoon/style.css';
-import { MuiThemeProvider, getMuiTheme } from 'material-ui/styles';
-import { blue500, grey600 } from 'material-ui/styles/colors';
-import * as injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import { MuiThemeProvider } from 'material-ui/styles';
+import JssProvider from 'react-jss/lib/JssProvider';
+import createContext from '../styles/createContext';
+import { withStyles } from 'material-ui/styles';
+const context = createContext();
 
-const muiTheme = getMuiTheme({
-    palette: {
-        primary1Color: blue500
-    },
-    appBar: {
-        textColor: grey600
+// Apply some reset
+const decorate = withStyles(theme => ({
+    '@global': {
+        html: {
+            background: theme.palette.background.default,
+            WebkitFontSmoothing: 'antialiased', // Antialiasing.
+            MozOsxFontSmoothing: 'grayscale' // Antialiasing.
+        },
+        body: {
+            margin: 0
+        }
     }
-});
+}));
 
-const MyUIProvider = (props: any) => {
-    return (
-        <MuiThemeProvider muiTheme={muiTheme}>
-            {props.children}
+const AppWrapper = decorate<{ children: JSX.Element }>(props => props.children);
+
+const UIProvider = (props: any) => (
+    <JssProvider registry={context.sheetsRegistry} jss={context.jss}>
+        <MuiThemeProvider
+            theme={context.theme}
+            sheetsManager={context.sheetsManager}
+        >
+            <AppWrapper>{props.children}</AppWrapper>
         </MuiThemeProvider>
-    );
-};
+    </JssProvider>
+);
 
-export default MyUIProvider;
+export default UIProvider;

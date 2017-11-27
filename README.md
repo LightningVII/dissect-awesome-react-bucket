@@ -105,9 +105,6 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 	/* 调用 Chrome 浏览器 redux-devtools 开发插件 */
 	// import { composeWithDevTools } from 'redux-devtools-extension';
 	
-	/* 调用 Chrome 浏览器 redux-devtools 开发插件 */
-	import * as Perf from 'react-addons-perf';
-	
 	/* 检测reducer的纯函数规则 */
 	const immutableStateInvariantMiddleware = require('redux-immutable-state-invariant');
 	
@@ -123,8 +120,6 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 	}
 	declare var window: Window;
 	const win = window; */
-	
-	win.Perf = Perf;
 	
 	/* 初始化默认 state */
 	const initialState = {};

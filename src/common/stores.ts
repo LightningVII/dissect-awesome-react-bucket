@@ -5,13 +5,10 @@ import reducer from './reducers';
 import createSagaMiddleware from 'redux-saga';
 
 /* 业务saga异步请求模块 */
-import { watchCountFetch } from '../pages/count/sagas';
+// import { watchCountFetch } from '../pages/count/sagas';
 
 /* 调用 Chrome 浏览器 redux-devtools 开发插件 */
 // import { composeWithDevTools } from 'redux-devtools-extension';
-
-/* 调用 Chrome 浏览器 redux-devtools 开发插件 */
-import * as Perf from 'react-addons-perf';
 
 import thunk from 'redux-thunk';  
 
@@ -30,8 +27,6 @@ const win = window as any;
 }
 declare var window: Window;
 const win = window; */
-
-win.Perf = Perf;
 
 /* 初始化默认 state */
 const initialState = {};
@@ -57,6 +52,6 @@ export default function configureStore(state: any = initialState) {
     const store = createStore(reducer, state, storeEnhancer);
 
     /* saga 中间件运行 saga业务模块 */
-    sagaMiddleware.run(watchCountFetch);
+    // sagaMiddleware.run(watchCountFetch);
     return store;
 }

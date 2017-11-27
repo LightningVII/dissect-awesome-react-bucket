@@ -1,15 +1,19 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-// import App from './App';
-import IndexRouter from './Router';
+import { render } from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import './index.style';
-import Provider from './providers';
+import withStyles from 'material-ui/styles/withStyles';
+import provider from './providers';
+import IndexRouter from './Router';
 
-ReactDOM.render(
-  <Provider>
-    <IndexRouter />
-  </Provider>,
-  document.getElementById('root') as HTMLElement
-);
+const styles = {
+    root: {
+        textAlign: 'center',
+        paddingTop: 200
+    }
+};
+
+const Index = provider(withStyles(styles)<{}>(IndexRouter));
+
+render(<Index />, document.querySelector('#root'));
+
 registerServiceWorker();
