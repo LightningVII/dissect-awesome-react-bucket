@@ -296,7 +296,34 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 { ...todoItem, completed: !todoItem.completed }
 	
 	
+### redux-saga
+function* multiSaga(requestAction) {
+    const ids = requestAction.payload;
+    const level = 'None';
+    try {
+        const requestApi = Util.requestApi.bind(Util);
+        
+        const multiReq = ids.map((id)=>{
+            return call(requestApi, level, {
+                id: id,
+                _mt: 'unicorn.getModuleById'
+            })
+        });
 
+        const res = yield [multiReq];
+        for({ stat, content } of res) {
+            if (stat && stat.code === 0)
+            yield put({
+                type: ActionTypes.FETCH_GOODS_SUCCEEDED,
+                payload: content
+            });
+        }
+
+    } catch (error) {
+        console.warn(`获取查询用户历史异常`);
+        yield put({ type: ActionTypes.FETCH_GOODS_FAILED, error });
+    }
+}
 
 	
 ###### ps: 项目优化技巧／写法方案中的，8、9、10是转载
