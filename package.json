@@ -1,7 +1,8 @@
 {
-  "name": "create-react-app-with-typescript",
+  "name": "dissect-awesome-react-bucket",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "autoprefixer": "7.1.2",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
