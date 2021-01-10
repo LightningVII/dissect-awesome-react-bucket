@@ -38,9 +38,9 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 
 > 由原来的 action 与 reducer 通信，变为 action -> saga -> reducer，saga监听 action，异步事件结束后，通知 reducer 处理后续
 
-##issue
+## issue
 #### 1. material-ui @types文件接口声明有误(出现接口遗漏未定义的情况)
-#####处理方案: /node_modules/@types/mmaterial-ui/index.d.ts
+##### 处理方案: /node_modules/@types/mmaterial-ui/index.d.ts
 	interface MuiTheme {
 	    ...
 	    bottomNavigation?: {
@@ -154,9 +154,9 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 	}
 
 	
-##examples
-####1. redux 基础应用实例
-#####具体代码参见 /examples/redux
+## examples
+#### 1. redux 基础应用实例
+##### 具体代码参见 /examples/redux
 
 
 ## 项目优化技巧／写法方案
