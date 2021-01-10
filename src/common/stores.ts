@@ -48,7 +48,7 @@ export default function configureStore(state: any = initialState) {
     /* 使用 composeWithDevTools 组合redux中间件并应用，也可以使用redux的compose，进行组合中间件 */
     const storeEnhancer = compose(
         applyMiddleware(...middlewares),
-        win.__REDUX_DEVTOOLS_EXTENSION__ && win.__REDUX_DEVTOOLS_EXTENSION__()
+        // win.__REDUX_DEVTOOLS_EXTENSION__ && win.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
     /* 创建 store 实例 */
