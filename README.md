@@ -18,7 +18,7 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 2. react perf
 3. redux-immutable-state-invariant
 
-##Project Structure
+## Project Structure
 #### redux
 1. actions **(定义数据CURD方法及入参)**
 1. // saga(async actions) **(定义数据CURD方法及入参)**
@@ -28,8 +28,8 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 4. constants **(存放action定义的方法名，目的让reducer找到action)**
 
 
-##Thinks
-###redux 单项数据流
+## Thinks
+### redux 单项数据流
 - 初始化 root -> store -> reducer -> type -> action
 - 运行中 view -> action -> (异步action) -> root -> store -> reducer -> view
 - **saga作用** 
@@ -212,7 +212,7 @@ Use create-react-app build react & redux & react-redux & react-router-v4 & redux
 		/* const mapDispatchToProps = Actions; */
 		export default connect(mapStateToProps, Actions)(TodoList);
 	
-###表达式
+### 表达式
 [payload, ...state]
 { ...todoItem, completed: !todoItem.completed }
 	
